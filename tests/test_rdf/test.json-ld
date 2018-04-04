@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "@vocab": "http://case.example.org/core#",
+    "case": "http://case.example.org/core#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "_:d168d27d-eac3-44f8-8615-80a6f1a535aa",
+      "@type": "SimpleName",
+      "familyName": "Doe",
+      "givenName": "John"
+    },
+    {
+      "@id": "e72bad43-1ae7-4f16-9a30-a104bcd81e11",
+      "@type": "ForensicAction",
+      "createdTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-12-08T12:03:14.666000"
+      },
+      "endTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-07-21T14:12:00"
+      },
+      "propertyBundle": {
+        "@id": "_:0537d14a-e099-4f61-bc32-7808f260f79c"
+      },
+      "startTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-07-21T13:32:00"
+      }
+    },
+    {
+      "@id": "_:0537d14a-e099-4f61-bc32-7808f260f79c",
+      "@type": "ActionReferences",
+      "instrument": {
+        "@id": "3d81db19-f8d6-4b99-a0f6-6297280ae97f"
+      },
+      "performer": {
+        "@id": "4a2f6aa5-23f2-43c6-96c8-b5025949dac2"
+      }
+    },
+    {
+      "@id": "3d81db19-f8d6-4b99-a0f6-6297280ae97f",
+      "@type": "Tool",
+      "createdTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-12-08T12:03:14.665000"
+      },
+      "creator": "Frank Grimes",
+      "name": "Super Forensic Tool 3000",
+      "toolType": "Extraction",
+      "version": "3.4.5"
+    },
+    {
+      "@id": "4a2f6aa5-23f2-43c6-96c8-b5025949dac2",
+      "@type": "Identity",
+      "createdTime": {
+        "@type": "xsd:dateTime",
+        "@value": "2017-12-08T12:03:14.666000"
+      },
+      "propertyBundle": {
+        "@id": "_:d168d27d-eac3-44f8-8615-80a6f1a535aa"
+      }
+    }
+  ]
+}
