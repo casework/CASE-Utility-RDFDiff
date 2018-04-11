@@ -8,7 +8,6 @@
 #
 # (c) 2018 The MITRE Corporation. All Rights Reserved.
 
-
 #!/usr/bin/python2.7
 import sys
 import argparse
@@ -23,7 +22,7 @@ try:
     from rdflib import URIRef, RDFS, RDF, BNode, compare
 except ImportError as import_err:
     print("[Error] Missing package %s" % import_err)
-    sys.exit()
+    sys.exit(1)
 
 init(convert=True)  # Used for printing colorful text.
 
@@ -135,6 +134,7 @@ class Verifier:
 
         except AttributeError as attr_err:
             print("[iter] Error parsing graph: %s" % str(attr_err))
+            sys.exit(1)
 
     def compare_graphs(self):
         """
@@ -245,7 +245,7 @@ class Verifier:
         for element in self.custom_gloss_object:
             print(Fore.GREEN + "\t" + element)
 
-    def verify_object_existance(self, debug, color):
+    def verify_object_existance(self, debug, color, verbose, strict):
         """
         Name: verify_object_existence
         Description: Iterate through custom tool structure and
@@ -254,25 +254,27 @@ class Verifier:
         Return: N/A
         """
 
+#        import pdb; pdb.set_trace()
         for predicate in self.tool_output_predicate:
             if (predicate in self.custom_gloss_predicate) \
                     or (predicate in self.custom_gloss_subject) \
                     or (predicate in self.custom_gloss_object):
-                if color is not None:
+
+                if color is True and verbose is True:
                     print(Fore.GREEN + "[+] Match!\n\t%s in %s and %s\n" % (predicate, self.custom_gloss, self.tool_output))
-                else:
+                elif verbose is True:
                     print("[+] Match!\n\t%s in %s and %s\n" % (predicate, self.custom_gloss, self.tool_output))
             else:
-                if color is not None:
-                    print(Fore.RED + "[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss,
-                                                                          self.tool_output))
+                if color is True:
+					print(Fore.RED + "[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
+                if strict is True:
+                    sys.exit(1)
                 else:
-                    print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss,
-                                                                              self.tool_output))
+                    print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss,self.tool_output))
 
-                if debug is not None:
-                    print(Fore.WHITE + "="*10+"[ Entering Debug Mode ]" + "="*10+"\n")
-                    pdb.set_trace()
+#			if debug is not None:
+#				print(Fore.WHITE + "="*10+"[ Entering Debug Mode ]" + "="*10+"\n")
+#				pdb.set_trace()
 
 
 if __name__ == "__main__":
@@ -291,17 +293,19 @@ if __name__ == "__main__":
         parser.add_argument("-if", "--ingestFormat", required=True,
                             help="Specify external tool format (turtle,n3,xml,json-ld).")
 
-        parser.add_argument("-pdb", "--debug", required=False, help="Break on errors within --verify.")
-        parser.add_argument("-v", "--verify", required=False, help="Iterate over RDFgraphs between tool output and a" +
+        parser.add_argument("-pdb", "--debug", action="store_true", required=False, help="Break on errors within --verify.")
+        parser.add_argument("-v", "--verify", action="store_true", required=False, help="Iterate over RDFgraphs between tool output and a" +
                             "given RDFSchema. Differences and similaries (ignoring BNodes) will be displayed.")
 
-        parser.add_argument("-tg", "--toolgraph", required=False, help="Print all graphs from tool schema.")
-        parser.add_argument("-gg", "--glossarygraph", required=False, help="Print all graphs from glossary schema.")
-
-        parser.add_argument("--color", required=False, help="Utilize color output.")
+        parser.add_argument("-tg", "--toolgraph", action="store_true", required=False, help="Print all graphs from tool schema.")
+        parser.add_argument("-gg", "--glossarygraph",action="store_true", required=False, help="Print all graphs from glossary schema.")
+        parser.add_argument("--verbose",action="store_true", required=False, help="Increase verbosity of output.")
+        parser.add_argument("--color", action="store_true", required=False, help="Utilize color output.")
+        parser.add_argument("-s", "--strict", action="store_true", required=False, help="Hard stop on first error.")
 
     except argparse.ArgumentError as err:
         print ("[Error] %s is required." % err)
+        sys.exit(1)
 
     finally:
         parser.parse_args()
@@ -311,7 +315,7 @@ if __name__ == "__main__":
     vobj.populate_graphs()
 
     if args.verify:
-        vobj.verify_object_existance(args.debug, args.color)
+        vobj.verify_object_existance(args.debug, args.color, args.verbose, args.strict)
     elif args.toolgraph:
         vobj.print_tools_graph(args.color)
     elif args.glossarygraph:
