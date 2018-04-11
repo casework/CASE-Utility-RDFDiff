@@ -267,14 +267,14 @@ class Verifier:
             else:
                 if color is True:
 					print(Fore.RED + "[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
+                else:
+					print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
                 if strict is True:
                     sys.exit(1)
-                else:
-                    print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss,self.tool_output))
 
-#			if debug is not None:
-#				print(Fore.WHITE + "="*10+"[ Entering Debug Mode ]" + "="*10+"\n")
-#				pdb.set_trace()
+            if debug is True:
+                print("="*10+"[ Entering Debug Mode ]" + "="*10+"\n")
+                pdb.set_trace()
 
 
 if __name__ == "__main__":
