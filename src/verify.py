@@ -266,9 +266,9 @@ class Verifier:
                     print("[+] Match!\n\t%s in %s and %s\n" % (predicate, self.custom_gloss, self.tool_output))
             else:
                 if color is True:
-					print(Fore.RED + "[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
+			print(Fore.RED + "[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
                 else:
-					print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
+			print("[!] %s not in %s, but it is in %s\n" % (predicate, self.custom_gloss, self.tool_output))
                 if strict is True:
                     sys.exit(1)
 
