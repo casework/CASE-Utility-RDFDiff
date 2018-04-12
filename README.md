@@ -1,16 +1,16 @@
-### Ontology-Verifier
-A RDF Ontology verifier and ontology trouble shooter for CASE/UCO.
+### Ontology-Validator
+A RDF Ontology Validator and ontology trouble shooter for CASE/UCO.
 
 ### What it does
-Ontology-Verifier takes output of a tool (JSON/JSON-LD/XML/etc...)
-and attempts to verify it aligns with a RDF based ontology (OWL/N3/ttl).
+Ontology-Validator takes output of a tool (JSON/JSON-LD/XML/etc...)
+and attempts to validate it against a RDF based ontology (OWL/N3/ttl).
 Any entry in the tool's output that is NOT in the Ontology (specified via CLI)
 will display an error. CLI arugments can be added to cause a debugger to start
 so you may explore the graph to view where things went wrong.
 
 
 ### How it works
-Verifier.py will read in an RDF vocabulary defined via ``` -g``` (glossary) to
+Validate.py will read in an RDF vocabulary defined via ``` -g``` (glossary) to
 check a custom tool's output against via ```-i```. The Python library rdflib 
 is used to turn the RDF schema into tripples which are then broken into three lists; 
 subject, predicate and object. Finally, each element of the tools ouput within
@@ -32,7 +32,8 @@ sudo pip install -r requirements.txt
 ```
 
 ### Unit Tests
-The ontology verifier is heavily reliant on 3rd pary libraries, primarily RDFlib.
+The ontology validator
+is heavily reliant on 3rd pary libraries, primarily RDFlib.
 RDFLib is under heavy development. To ensure compatability with new releases
 unit tests have been written to check for consistency.
 
@@ -46,7 +47,7 @@ python test_verifier.py;
 
 #### CLI Usage
 * ``` -g ```: Define the RDF schema (aka glossary) in use for your ontology.
-* ``` -gf ```: Define the format the schema is in. By default verifier
+* ``` -gf ```: Define the format the schema is in. By default validator.py
 will try to auto-guess based on extension. However, if additional plugins are
 installed it is best practice to manually specify it.
 
@@ -65,32 +66,30 @@ against.
 * Check for inconsistencies between graphs:
 
 ```
-verify.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1
+validate.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1
 ```
 
 * Check for inconsistencies between graphs with color output:
 ```
-verify.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1 --color=1
+validate.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1 --color=1
 ```
 
 * Enter debug mode. This will cause a PDB session to open when an inconsistency is met. This can be useful for manually navigating the RDF graph in Python.:
 ```
-verify.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1 --debug=1
+validate.py -g case.ttl -gf turtle -i output.json-ld -if json-ld --verify=1 --debug=1
 
 ```
 
 * Print all graphs for tool's schema.
 
 ```
-verify.py -g case.ttl -gf turtle -i output.json-ld -if json-ld -tg=1
-
+validate.py -g case.ttl -gf turtle -i output.json-ld -if json-ld -tg=1
 ```
 
 * Print all graphs for ontology's schema.
 
 ```
-verify.py -g case.ttl -gf turtle -i output.json-ld -if json-ld -gg=1
-
+validate.py -g case.ttl -gf turtle -i output.json-ld -if json-ld -gg=1
 ```
 
 ### Submitting an Issue
