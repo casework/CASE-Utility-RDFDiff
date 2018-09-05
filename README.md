@@ -1,5 +1,9 @@
+# Cyber-investigation Analysis Standard Expression (CASE)
 
-### RDFDiff
+_Read the [Wiki tab](https://github.com/ucoProject/CASE/wiki) to learn **everything** you need to know about the Cyber-investigation Analysis Standard Expression (CASE) ontology._
+_For learning about the Unified Cyber Ontology, CASE's parent, see [UCO](https://github.com/ucoProject/UCO)._
+
+# RDFDiff
 An RDF and ontology trouble shooter for CASE/UCO.
 
 ### What it does
