@@ -26,7 +26,7 @@ found or not found it is displayed to the user. BNodes are skipped  as they
 have no appropriate label in RDF and should not be used to verify an ontology.
 
 
-#### Why not SPARQL?
+### Why not SPARQL?
 In order to facilitate a broad range of ontologies and custom tool outputs,
 SPARQL queries are not used for verification. CASE/UCO allow for robust
 flexibility and this tool  aims to compliment this approach.
@@ -43,15 +43,14 @@ is heavily reliant on 3rd pary libraries, primarily RDFlib.
 RDFLib is under heavy development. To ensure compatability with new releases
 unit tests have been written to check for consistency.
 
-#### Run Unit Tests
+Run unit tests:
 ```
 cd tests;
 python test_verifier.py;
 ```
 
-### Usage
+### CLI Usage
 
-#### CLI Usage
 * ``` -g ```: Define the RDF schema (aka glossary) in use for your ontology.
 * ``` -gf ```: Define the format the schema is in. By default validator.py
 will try to auto-guess based on extension. However, if additional plugins are
@@ -67,7 +66,7 @@ against.
 * schema.
 
 
-#### CLI Example
+### CLI Example
 
 
 * Check for inconsistencies between graphs:
