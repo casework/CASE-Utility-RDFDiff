@@ -5,6 +5,7 @@ _For learning about the Unified Cyber Ontology, CASE's parent, see [UCO](https:/
 
 # RDFDiff
 Author: [jstroud-mitre](https://github.com/jstroud-mitre)
+
 An RDF and ontology trouble shooter for CASE/UCO.
 
 ### What it does
