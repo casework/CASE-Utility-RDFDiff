@@ -4,6 +4,7 @@ _Read the [CASE Wiki tab](https://github.com/ucoProject/CASE/wiki) to learn **ev
 _For learning about the Unified Cyber Ontology, CASE's parent, see [UCO](https://github.com/ucoProject/UCO)._
 
 # RDFDiff
+Author: [jstroud-mitre](https://github.com/jstroud-mitre)
 An RDF and ontology trouble shooter for CASE/UCO.
 
 ### What it does
