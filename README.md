@@ -105,7 +105,7 @@ rdfdiff.py -g case.ttl -gf turtle -i output.json-ld -if json-ld -gg=1
 
 Before you post a Github issue or send an email ensure you've done this checklist:
 
-1. [Determined scope](#determine-scope-and-get-started) of your task. It is not necessary for most parties to understand all aspects of the ontology, mapping methods, and supporting tools.
+1. [Determined scope](https://caseontology.org/ontology/start.html#scope) of your task. It is not necessary for most parties to understand all aspects of the ontology, mapping methods, and supporting tools.
 
 2. Familiarize yourself with the [labels](../labels) and search the [Issues tab](../issues). Typically, only light-blue and red labels should be used by non-admin Github users while the others should be used by CASE Github admins.
 *All but the red `Project` labels are found in every [`casework`](https://github.com/casework) repository.*
