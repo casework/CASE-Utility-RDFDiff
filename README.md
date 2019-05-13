@@ -6,7 +6,7 @@ _For learning about the Unified Cyber Ontology, CASE's parent, see [UCO](https:/
 # RDFDiff
 Author: [jstroud-mitre](https://github.com/jstroud-mitre)
 
-An RDF and ontology trouble shooter for CASE/UCO.
+An RDF and ontology trouble shooter for CASE and UCO.
 
 ### What it does
 RDFDiff takes output of a tool (JSON/JSON-LD/XML/etc...)
@@ -30,7 +30,7 @@ have no appropriate label in RDF and should not be used to verify an ontology.
 
 ### Why not SPARQL?
 In order to facilitate a broad range of ontologies and custom tool outputs,
-SPARQL queries are not used for verification. CASE/UCO allow for robust
+SPARQL queries are not used for verification. CASE and UCO allow for robust
 flexibility and this tool  aims to compliment this approach.
 
 
