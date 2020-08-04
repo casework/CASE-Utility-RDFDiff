@@ -6,6 +6,12 @@ _For learning about the Unified Cyber Ontology, CASE's parent, see [UCO](https:/
 # RDFDiff
 An RDF and ontology trouble shooter for CASE and UCO.
 
+### Development Status: Alpha
+
+Alpha status implies:
+- Designation of versions of CASE and UCO the project supports.
+- Follow Semantic Versioning (SEMVER).
+
 ### What it does
 RDFDiff takes output of a tool (JSON/JSON-LD/XML/etc...)
 and attempts to validate it against a RDF based ontology (OWL/N3/ttl).
